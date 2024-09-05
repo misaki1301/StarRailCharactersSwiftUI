@@ -5,17 +5,25 @@ import PackageDescription
 
 let package = Package(
     name: "StarRailCharactersSwiftUI",
+	platforms: [
+		.iOS(.v15),
+	],
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
             name: "StarRailCharactersSwiftUI",
             targets: ["StarRailCharactersSwiftUI"]),
     ],
+	dependencies: [
+		.package(url: "https://github.com/misaki1301/SwordWard", branch: "main")
+	],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "StarRailCharactersSwiftUI"),
+            name: "StarRailCharactersSwiftUI",
+			dependencies: ["SwordWard"]
+		),
         .testTarget(
             name: "StarRailCharactersSwiftUITests",
             dependencies: ["StarRailCharactersSwiftUI"]),
